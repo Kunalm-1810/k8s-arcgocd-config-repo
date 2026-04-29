@@ -23,8 +23,7 @@ spec:
     spec:
       serviceAccountName: default
       containers:
-      - name: fe-law-ai-container
-        image: kunalmane/frontend:v17
-        ports:
-        - containerPort: 80
-        
+        - name: fe-law-ai-container
+          image: kunalmane/frontend:v18
+          ports:
+            - containerPort: 80

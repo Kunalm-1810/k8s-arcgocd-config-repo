@@ -7,9 +7,9 @@ metadata:
     app: be-law-ai
     env: production
 spec:
-  replicas: 2 
+  replicas: 2
   strategy:
-    type: RollingUpdate 
+    type: RollingUpdate
   selector:
     matchLabels:
       app: be-law-ai
@@ -23,10 +23,10 @@ spec:
     spec:
       serviceAccountName: default
       containers:
-      - name: be-law-ai-container
-        image: kunalmane/backend:v17
-        ports:
-        - containerPort: 5000
-        envFrom:
-        - secretRef:
-            name: law-ai-secret
+        - name: be-law-ai-container
+          image: kunalmane/backend:v18
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: law-ai-secret
