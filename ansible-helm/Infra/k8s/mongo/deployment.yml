@@ -1,0 +1,35 @@
+#mongodb deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongo
+    env: production
+spec:
+  replicas: 1   
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: mongo
+      env: production
+  template:
+    metadata:
+      name: mongo-pod
+      labels:
+        app: mongo
+        env: production
+    spec:
+      containers:
+      - name: mongo-container
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /data/db
+      volumes:
+      - name: mongo-data
+        persistentVolumeClaim:
+          claimName: mongo-pvc

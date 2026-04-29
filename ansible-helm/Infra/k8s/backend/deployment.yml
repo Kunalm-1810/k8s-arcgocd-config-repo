@@ -1,0 +1,32 @@
+#backend deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: be-law-ai
+    env: production
+spec:
+  replicas: 2 
+  strategy:
+    type: RollingUpdate 
+  selector:
+    matchLabels:
+      app: be-law-ai
+      env: production
+  template:
+    metadata:
+      name: be-law-ai-pod
+      labels:
+        app: be-law-ai
+        env: production
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: be-law-ai-container
+        image: your-dockerhub-username/backend:v1
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: law-ai-secret

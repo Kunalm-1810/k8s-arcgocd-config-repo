@@ -1,0 +1,30 @@
+#frontend deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: fe-law-ai
+    env: production
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: fe-law-ai
+      env: production
+  template:
+    metadata:
+      name: fe-law-ai-pod
+      labels:
+        app: fe-law-ai
+        env: production
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: fe-law-ai-container
+        image: your-dockerhub-username/frontend:v1
+        ports:
+        - containerPort: 80
+        

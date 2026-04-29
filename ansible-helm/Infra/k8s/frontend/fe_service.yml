@@ -1,0 +1,16 @@
+#servic.yml in frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: fe-law-ai-service
+  labels:
+    app: fe-law-ai
+    env: production
+spec:
+  type: ClusterIP
+  selector:
+    app: fe-law-ai
+    env: production
+  ports:
+  - port: 80
+    targetPort: 80
