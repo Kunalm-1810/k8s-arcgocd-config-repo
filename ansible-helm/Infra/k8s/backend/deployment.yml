@@ -24,7 +24,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: be-law-ai-container
-        image: your-dockerhub-username/backend:v1
+        image: kunalmane/backend:v1
         ports:
         - containerPort: 5000
         envFrom:

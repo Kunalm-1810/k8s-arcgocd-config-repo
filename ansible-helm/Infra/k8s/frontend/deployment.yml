@@ -24,7 +24,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: fe-law-ai-container
-        image: your-dockerhub-username/frontend:v1
+        image: kunalmane/frontend:v1
         ports:
         - containerPort: 80
         
